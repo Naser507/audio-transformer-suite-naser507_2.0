@@ -33,3 +33,16 @@ Open in browser: http://localhost:5000
 After saving, we’ll **add this file to Git**, commit, and push it.  
 
 Do you want me to give the exact Git commands for **just adding this README.md**?
+
+
+
+
+
+
+## Milestone: Dynamic Backgrounds & Docker Rebuild
+
+- Implemented dynamic background images that change per page.
+- Added smooth fade transitions for visual appeal.
+- Completed Flask routes for main pages.
+- Updated Dockerfile and container setup for lightweight deployment.
+- Prepared project for next audio analysis modules.
