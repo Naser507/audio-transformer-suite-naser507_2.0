@@ -5,12 +5,44 @@
     <title>{% block title %}Audio Transformer Suite{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    {% include 'includes/header.html' %}
-    {% include 'includes/menu.html' %}
-    <main>
+<body data-page="home">
+    <!-- Layer 1: Background Slideshow -->
+    <div class="background-slideshow"></div>
+
+    <!-- Layer 2: Header -->
+    <header class="site-header glass-panel">
+        {% include 'includes/header.html' %}
+    </header>
+
+    <!-- Layer 3: Menu -->
+    <nav class="site-menu glass-panel">
+        {% include 'includes/menu.html' %}
+    </nav>
+
+    <!-- Layer 2: Main Content -->
+    <main class="site-main glass-panel">
         {% block content %}{% endblock %}
     </main>
-    {% include 'includes/footer.html' %}
+
+    <!-- Layer 4: Footer -->
+    <footer class="site-footer">
+        {% include 'includes/footer.html' %}
+    </footer>
+
+    <!-- Scripts -->
+<!--
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.1.18/jquery.backstretch.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+ -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.1.18/jquery.backstretch.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+
+
+
 </body>
 </html>
