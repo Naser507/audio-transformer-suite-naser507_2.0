@@ -1,6 +1,9 @@
-<nav style="text-align:center; padding:10px; background:#555;">
-    <a href="/" style="color:white; margin:0 15px;">Home</a>
-    <a href="/converter" style="color:white; margin:0 15px;">Converter</a>
-    <a href="/analyzer" style="color:white; margin:0 15px;">Analyzer</a>
-    <a href="/articles" style="color:white; margin:0 15px;">Articles</a>
+\<nav id="mainMenu">
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('analyzer') }}">Analyzer</a></li>
+        <li><a href="{{ url_for('converter') }}">Converter</a></li>
+        <li><a href="{{ url_for('articles') }}">Articles</a></li>
+    </ul>
 </nav>
+

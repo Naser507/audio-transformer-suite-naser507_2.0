@@ -46,3 +46,8 @@ Do you want me to give the exact Git commands for **just adding this README.md**
 - Completed Flask routes for main pages.
 - Updated Dockerfile and container setup for lightweight deployment.
 - Prepared project for next audio analysis modules.
+
+## Latest Updates
+- Added cycling background images with frosted glass overlay
+- Updated header, menu, footer templates
+- Vanilla JS used for background and sticky menu

@@ -1,87 +1,193 @@
-/* ---------------------------
-   Layer 1: Background Slideshow
-   --------------------------- */
-.background-slideshow {
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- Body ---------- */
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ---------- Background Layer ---------- */
+.background-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;             /* Behind all content */
-    background-size: cover;   /* Cover entire viewport */
-    background-position: center;
-    background-repeat: no-repeat;
+    z-index: -2;
+    overflow: hidden;
 }
 
-/* ---------------------------
-   Base Glass Panel Styles
-   --------------------------- */
-.glass-panel {
-    backdrop-filter: blur(8px);        /* Frosted glass blur */
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    padding: 20px;
-    margin: 10px;
-
-    /* Color & Transparency */
-    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-    color: white;
-    position: relative;
-    z-index: 10;  /* Above background */
-}
-
-/* ---------------------------
-   Layer-specific Glass Panels
-   --------------------------- */
-.site-header {
-    background-color: rgba(0, 0, 0, 0.7); /* Slightly darker */
-    transition: background-color 0.3s ease;
-}
-
-.site-menu {
-    background-color: rgba(0, 0, 0, 0.5); /* Default semi-transparent */
-    transition: background-color 0.3s ease;
-}
-
-.site-main {
-    background-color: rgba(50, 50, 50, 0.4); /* Slightly lighter */
-}
-
-.site-footer {
-    background-color: #111; /* Fully opaque */
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-/* ---------------------------
-   Basic Layout
-   --------------------------- */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100%;
-}
-
-main {
-    min-height: 400px;
-    padding: 20px;
-}
-
-/* ---------------------------
-   Sticky menu for scroll effect
-   --------------------------- */
-.sticky {
-    position: fixed;
+.background-image {
+    position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 100;
-    background-color: #000 !important;  /* Fully opaque when sticky */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px);
+    transition: background-image 1.2s ease-in-out;
+    z-index: -2;
 }
 
-/* Optional: add spacing when menu becomes sticky */
-.sticky + main {
-    margin-top: 60px;  /* adjust based on menu height */
+.glass-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 30, 30, 0.55); /* frosted matte black */
+    backdrop-filter: blur(8px);
+    z-index: -1;
 }
+
+/* ---------- Header ---------- */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 50px;
+    position: relative;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+header .titles {
+    text-align: right;
+}
+
+header .titles h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 1px;
+}
+
+header .titles .underline {
+    width: 50px;
+    height: 3px;
+    background: red;
+    margin: 4px 0 6px auto;
+}
+
+header .titles h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ddd;
+}
+
+/* ---------- Menu Bar ---------- */
+nav {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+nav.scrolled {
+    background: rgba(0, 0, 0, 1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    padding: 12px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff5555;
+}
+
+/* ---------- Body ---------- */
+.main-content {
+    min-height: 70vh;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+footer .footer-column {
+    width: 200px;
+    margin: 10px;
+}
+
+footer .footer-column h3 {
+    margin-bottom: 10px;
+    color: #ff5555;
+    font-size: 1.1rem;
+}
+
+footer .footer-column p {
+    font-size: 0.9rem;
+    color: #ddd;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+/* ---------- Scroll Behavior ---------- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- Responsiveness ---------- */
+@media (max-width: 768px) {
+    header, nav, footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .main-content {
+        padding: 40px 20px;
+    }
+}
+

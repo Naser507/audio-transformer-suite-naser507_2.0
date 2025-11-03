@@ -1,75 +1,35 @@
+// ---------- Background Slideshow ----------
+const images = ["image1.jpg", "image2.jpg", "image3.jpg"]; // adjust later for more
+const imageFolder = "/static/images/imageFolder/";
+let currentIndex = 0;
 
-/*
+const backgroundDiv = document.querySelector(".background-image");
 
-// script.js
-$(document).ready(function(){
-    // Determine image folder based on the current page
-    // Change folder name per page: home, analyzer, converter, etc.
-    var page = document.body.dataset.page; // Set data-page="home" in <body> if you want
-    var imageFolder = "/static/images/" + page + "/";
+// Set initial background
+if (backgroundDiv) {
+    backgroundDiv.style.backgroundImage = `url(${imageFolder}${images[0]})`;
+}
 
-    // Example: get all images manually listed (or you can automate)
-    var images = [
-        imageFolder + "image1.jpg",
-        imageFolder + "image2.jpg",
-        imageFolder + "image3.jpg"
-    ];
+// Function to change background
+function changeBackground() {
+    currentIndex = (currentIndex + 1) % images.length;
+    if (backgroundDiv) {
+        backgroundDiv.style.backgroundImage = `url(${imageFolder}${images[currentIndex]})`;
+    }
+}
 
-    // Initialize Backstretch for background slideshow
-    $.backstretch(images, {
-        duration: 5000, // 5 seconds per image
-        fade: 1000      // 1 second fade transition
-    });
-});
+// Change every 7 seconds
+setInterval(changeBackground, 7000);
 
-*/
+// ---------- Sticky Menu ----------
+const menu = document.getElementById("mainMenu");
 
-
-
-
-
-
-// script.js 
-
-
-
-$(document).ready(function(){
-    // Single shared image folder for all pages
-    var imageFolder = "/static/images/imageFolder/"; // Put all slideshow images here
-
-    // List all images in the folder manually
-    var images = [
-        imageFolder + "image1.jpg",
-        imageFolder + "image2.jpg",
-        imageFolder + "image3.jpg",
-        imageFolder + "image4.jpg",
-        imageFolder + "image5.jpg",
-        imageFolder + "image6.jpg",
-        imageFolder + "image7.jpg",
-        imageFolder + "image8.jpg",
-        imageFolder + "image9.jpg",
-        imageFolder + "image10.jpg"
-    ];
-
-    // Initialize Backstretch slideshow
-    $.backstretch(images, {
-        duration: 5000, // 5 seconds per image
-        fade: 1000      // 1 second fade transition
-    });
-
-    // ---------------------------
-    // Sticky menu behavior
-    // ---------------------------
-    var menu = $('.site-menu');
-    var header = $('.site-header');
-    var headerHeight = header.outerHeight();
-
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > headerHeight) {
-            menu.addClass('sticky'); // Menu becomes fixed and opaque
+window.addEventListener("scroll", function() {
+    if (menu) {
+        if (window.scrollY > 50) {
+            menu.classList.add("scrolled");
         } else {
-            menu.removeClass('sticky'); // Reset to original semi-transparent
+            menu.classList.remove("scrolled");
         }
-    });
+    }
 });
-
