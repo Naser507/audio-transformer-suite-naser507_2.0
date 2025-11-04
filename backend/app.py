@@ -32,6 +32,13 @@ def converter():
 @app.route('/articles')
 def articles():
     return render_template('pages/articles.html')
+@app.route('/foundations')
+def foundations():
+    return render_template('pages/foundations.html')
+
+@app.route('/vision')
+def vision():
+    return render_template('pages/vision.html')
 
 # ---------- Run ----------
 if __name__ == "__main__":
